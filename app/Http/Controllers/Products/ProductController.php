@@ -96,9 +96,10 @@ class ProductController extends Controller
         return redirect('/product')->with('status','product updated Successfully');
     }
 
-    public function destroy(): View
+    public function destroy(Product $product)
     {
-        return view('products.index');
+        $product->delete();
+        return redirect('/product')->with('status','Product Deleted Successfully');
     }
 
      /**
