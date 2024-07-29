@@ -61,7 +61,7 @@ class CustomerController extends Controller
      */
     public function show(customer $customer)
     {
-        //
+        return view('customer.show', compact('customer'));
     }
 
     /**
@@ -69,15 +69,29 @@ class CustomerController extends Controller
      */
     public function edit(customer $customer)
     {
-        //
+        return view('customer.edit', compact('customer'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatecustomerRequest $request, customer $customer)
+    public function update(Request $request, customer $customer)
     {
-        //
+        $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email' => 'nullable|email',
+            'phone' => 'required|string'
+        ]);
+
+        $customer->update([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'phone' => $request->phone
+        ]);
+
+        return redirect('/customer')->with('status','customer updated Successfully');
     }
 
     /**
@@ -85,6 +99,8 @@ class CustomerController extends Controller
      */
     public function destroy(customer $customer)
     {
-        //
+        $customer->delete();
+        return redirect('/customer')->with('status','customer Deleted Successfully');
     }
+
 }

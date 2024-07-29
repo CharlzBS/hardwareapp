@@ -9,10 +9,10 @@
       <div class="row">
         <div class="col-6">
           <div class="callout callout-info">
-            <h5><i class="fas fa-info"></i> Product Details:</h5>
+            <h5><i class="fas fa-info"></i> customer Details:</h5>
             <h5>
-              <a href="{{ route('product.show', $product->id) }}"><i class="fas fa-arrow-left"></i></a>
-              &nbsp;&nbsp;&nbsp;<a href="{{ route('product.edit', $product->id) }}"><i class="fas fa-edit"></i></a>
+              <a href="{{ route('customer.show', $customer->id) }}"><i class="fas fa-arrow-left"></i></a>
+              &nbsp;&nbsp;&nbsp;<a href="{{ route('customer.edit', $customer->id) }}"><i class="fas fa-edit"></i></a>
               </h5>
           </div>
 
@@ -22,45 +22,21 @@
                 <div class="table-responsive">
                   <table class="table">
                     <tr>
-                      <th>Product Code:</th>
-                      <td>{{ $product->product_code }}</td>
+                      <th>First Name:</th>
+                      <td>{{ $customer->first_name }}</td>
                     </tr>
                     <tr>
-                      <th>Product Name:</th>
-                      <td>{{ $product->product_name }}</td>
+                      <th>Last Name:</th>
+                      <td>{{ $customer->last_name }}</td>
                     </tr>
                     <tr>
-                      <th>Barcode Symbology:</th>
-                      <td>{{ $product->product_barcode_symbology }}</td>
+                      <th>Email Address:</th>
+                      <td>{{ $customer->email }}</td>
                     </tr>
                     <tr>
-                      <th>Quantity:</th>
-                      <td>{{ $product->product_quantity }}</td>
-                    </tr>
-                    <tr>
-                      <th>Cost:</th>
-                      <td>{{ $product->product_cost }}</td>
-                    </tr>
-                    <tr>
-                      <th>Price:</th>
-                      <td>{{ $product->product_price }}</td>
-                    </tr>
-                    <tr>
-                      <th>Unit:</th>
-                      <td>{{ $product->product_unit }}</td>
-                    </tr>
-                    <tr>
-                      <th>Stock Alert:</th>
-                      <td>{{ $product->product_stock_alert }}</td>
-                    </tr>
-                    <tr>
-                      <th>Tax Type:</th>
-                      <td>{{ $product->product_tax_type }}</td>
-                    </tr>
-                    <tr>
-                      <th>Note:</th>
-                      <td>{{ $product->product_note }}</td>
-                    </tr>
+                      <th>Phone:</th>
+                      <td>{{ $customer->phone }}</td>
+                    </tr>                    
                   </table>
                 </div>
               </div>
