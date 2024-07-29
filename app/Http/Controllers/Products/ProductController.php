@@ -100,4 +100,12 @@ class ProductController extends Controller
     {
         return view('products.index');
     }
+
+     /**
+     * Display the specified resource.
+     */
+    public function show(Product $product)
+    {
+        return view('products.show', compact('product'));
+    }
 }
