@@ -41,9 +41,9 @@
                             </div>
 
                             
-                              <form action="{{ url('product.update') }}" method="POST">
+                              <form action="{{ route('product.update', $product->id) }}" method="POST">
                                 @csrf
-                                @method('PUT')
+                              @method('PUT')
               
                                 <div class="row">
                                   <div class="col-4">

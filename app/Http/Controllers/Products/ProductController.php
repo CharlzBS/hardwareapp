@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\Product;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class ProductController extends Controller
 {
@@ -65,7 +66,7 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $request->validate([
-            'product_name' => 'required|string|unique:products|max:255',
+            'product_name' => 'required|string|max:255', Rule::unique("products")->ignore($product->id),
             'product_quantity' => 'required|integer',
             'category_id' => 'required|integer',
             'product_cost' => 'required|integer',
