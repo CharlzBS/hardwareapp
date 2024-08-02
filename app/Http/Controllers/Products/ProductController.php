@@ -58,6 +58,7 @@ class ProductController extends Controller
         return redirect('/product')->with('status','Product created Successfully');
     }
 
+
     public function edit(Product $product)
     {
         return view('products.edit', compact('product'));
@@ -108,5 +109,47 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         return view('products.show', compact('product'));
+    }
+
+    public function getProductDetails(Request $request)
+    {
+        $productId = $request->input('product_id');
+        $products = Product::where('id', $productId)->get();
+        return response()->json($products);
+    }
+
+    public function calculate($product, $new_price = null) {
+        if ($new_price) {
+            $product_price = $new_price;
+        } else {
+            $this->unit_price[$product['id']] = $product['product_price'];
+            if ($this->cart_instance == 'purchase' || $this->cart_instance == 'purchase_return') {
+                $this->unit_price[$product['id']] = $product['product_cost'];
+            }
+            $product_price = $this->unit_price[$product['id']];
+        }
+        $price = 0;
+        $unit_price = 0;
+        $product_tax = 0;
+        $sub_total = 0;
+
+        if ($product['product_tax_type'] == 1) {
+            $price = $product_price + ($product_price * ($product['product_order_tax'] / 100));
+            $unit_price = $product_price;
+            $product_tax = $product_price * ($product['product_order_tax'] / 100);
+            $sub_total = $product_price + ($product_price * ($product['product_order_tax'] / 100));
+        } elseif ($product['product_tax_type'] == 2) {
+            $price = $product_price;
+            $unit_price = $product_price - ($product_price * ($product['product_order_tax'] / 100));
+            $product_tax = $product_price * ($product['product_order_tax'] / 100);
+            $sub_total = $product_price;
+        } else {
+            $price = $product_price;
+            $unit_price = $product_price;
+            $product_tax = 0.00;
+            $sub_total = $product_price;
+        }
+
+        return ['price' => $price, 'unit_price' => $unit_price, 'product_tax' => $product_tax, 'sub_total' => $sub_total];
     }
 }

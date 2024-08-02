@@ -6,6 +6,7 @@ use App\Http\Controllers\Permissions\PermissionController;
 use App\Http\Controllers\Categories\CategoryController;
 use App\Http\Controllers\Products\ProductController;
 use App\Http\Controllers\Customers\CustomerController;
+use App\Http\Controllers\POS\SalesController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,7 +28,12 @@ Route::middleware('auth')->group(function () {
     Route::resource('/permission', PermissionController::class);
     Route::resource('/category', CategoryController::class);
     Route::resource('/product', ProductController::class);
+
+    Route::get('/getProductDetails',[ProductController::class, 'getProductDetails']);
+
     Route::resource('/customer', CustomerController::class);
+    Route::resource('/sales', SalesController::class);
+    
 
     
 });

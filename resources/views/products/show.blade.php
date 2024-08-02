@@ -33,10 +33,7 @@
                       <th>Barcode Symbology:</th>
                       <td>{{ $product->product_barcode_symbology }}</td>
                     </tr>
-                    <tr>
-                      <th>Quantity:</th>
-                      <td>{{ $product->product_quantity }}</td>
-                    </tr>
+                   
                     <tr>
                       <th>Cost:</th>
                       <td>{{ $product->product_cost }}</td>
@@ -46,12 +43,20 @@
                       <td>{{ $product->product_price }}</td>
                     </tr>
                     <tr>
-                      <th>Unit:</th>
-                      <td>{{ $product->product_unit }}</td>
+                      <th>Quantity:</th>
+                      <td>{{ $product->product_quantity .' '.$product->product_unit }}</td>
+                    </tr>
+                    <tr>
+                      <th>Stock Worth:</th>
+                      <td>{{ $product->product_quantity * $product->product_price }}</td>
                     </tr>
                     <tr>
                       <th>Stock Alert:</th>
                       <td>{{ $product->product_stock_alert }}</td>
+                    </tr>
+                    <tr>
+                      <th>Tax(%):</th>
+                      <td>{{ $product->product_order_tax }}</td>
                     </tr>
                     <tr>
                       <th>Tax Type:</th>

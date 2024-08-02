@@ -121,14 +121,25 @@
                                 </div>
   
                                 <div class="row">
-                                  <div class="col-6">
+                                  <div class="col-4">
+                                    <div class="form-group mb-3">
+                                      <label for="product_order_tax">Product order Tax</label>
+                                      <input type="text" name="product_order_tax" class="form-control" id="product_order_tax" value="{{  $product->product_order_tax }}">
+                                      @error('product_order_tax') <span class="text-danger">{{ $message }}</span> @enderror
+                                    </div>
+                                  </div>
+                                  <div class="col-4">
                                     <div class="form-group mb-3">
                                       <label for="product_tax_type">product_tax_type</label>
-                                      <input type="text" name="product_tax_type" class="form-control" id="product_tax_type" value="{{  $product->product_tax_type }}">
+                                      <select class="form-control"  name="product_tax_type" id="product_tax_type">
+                                        <option value="{{  $product->product_tax_type }}">{{  $product->product_tax_type == 1 ? 'Exclusive' : 'Inclusive' }}</option>
+                                        <option value="1">Exclusive</option>
+                                        <option value="2">Inclusive</option>
+                                    </select>
                                       @error('product_tax_type') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                   </div>
-                                  <div class="col-6">
+                                  <div class="col-4">
                                     <div class="form-group mb-3">
                                       <label for="product_note">product_note</label>
                                       <input type="text" name="product_note" class="form-control" id="product_note" value="{{  $product->product_note }}">

@@ -20,6 +20,19 @@
   <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 
+  <style type="text/css">
+    #table_items  thead tr{
+      background-color:darkgray;
+      color: #ffffff;
+    }
+
+    #table_items  tbody tr{
+      text-align: center;
+    }
+  </style>
+
+  @stack('csss')
+
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -38,7 +51,6 @@
     </div>
     <strong>Copyright &copy; <?php echo date("Y"); ?> <a href="#">by..cshine</a>.</strong> All rights reserved.
   </footer>
-  
 </div>
 <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
 <script src="{{ asset('plugins/jquery-ui/jquery-ui.min.js') }}"></script>
